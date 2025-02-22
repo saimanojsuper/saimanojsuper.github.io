@@ -1,82 +1,270 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>SAI MANOJ NAPA RESUME</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
-
 <body>
-    <table cellspacing="10"><tr>
-   <td> <img src="sai.jpeg" width="200" height="200"></td>
-   <td> <b>NAPA SAI MANOJ</b>
-       <br>
-       Presently Studying Production Engineering in the NIT Calicut
-   </td>
-</tr>
-</table>
-<hr>
-    <h1>Education</h1>
-    <table cellspacing="10">
-        <tr>
-            <td>2016-2020</td>
-            <td><b>Bachelor of Technology</b> <i>Production Engineering,</i> <br>
-                National Institute of Technology,Calicut. <i>7.5(upto 6th Sem)</i>
-            </td>
-        </tr>
-        <tr>
-            <td>2016</td>
-            <td><b>Class XII</b> <br>
-                Narayana Junior College, Stonehouse Peta, <i>97.9%</i>
-            </td>
-        </tr>
-        <tr>
-            <td>2014</td>
-            <td><b>Class X</b> <br>
-                Z.P. High School ,Narayana Reddy Peta. <i>9.3/10</i>
-            </td>
-        </tr>
+    <div class="scroll-up-btn">
+        <i class="fas fa-angle-up"></i>
+    </div>
+    <nav class="navbar">
+        <div class="max-width">
+            <div class="logo"><a href="#">Portfo<span>lio.</span></a></div>
+            <ul class="menu">
+                <li><a href="#home" class="menu-btn">Home</a></li>
+                <li><a href="#about" class="menu-btn">About</a></li>
+                <li><a href="#services" class="menu-btn">Services</a></li>
+                <li><a href="#skills" class="menu-btn">Skills</a></li>
+                <li><a href="#timeline" class="menu-btn">Timeline</a></li>
+                <li><a href="#teams" class="menu-btn">Teams</a></li>
+                <li><a href="#contact" class="menu-btn">Contact</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- home section start -->
+    <section class="home" id="home">        
+        <div class="max-width">
+            <div class="home-content">
+                <div class="text-1">Hello, my name is</div>
+                <div class="text-2">Sai Manoj Napa</div>
+                <div class="text-3">And I'm a <span class="typing"></span></div>
+                <a href="#about">Here you go...</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- about section start -->
+    <section class="about" id="about">
+        <div class="max-width">
+            <h2 class="title">About me</h2>
+            <div class="about-content">
+                <div class="column left">
+                    <img src="images/photo.jpeg" alt="">
+                </div>
+                <div class="column right">
+                    <div class="text">I'm Sai Manoj and I'm a <span class="typing-2"></span></div>
+                    <p>I’m a Senior Software Engineer with more than 5 years of professional experience in Java, React.js and AWS. Currently, I’m leading an agile development team of 5 where I’m in charge of designing, architecturing and developing brand new, highly scalable, AI-driven applications using Java, Spring Boot, Microservices, AWS services, AWS Generative AI and Postgres Vector database. I proven track record of driving end-to-end SaaS product.
+                    </p>
+                    <a href="./resume/ResumeSaiManoj.pdf" download >Download CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- services section start -->
+    <section class="services" id="services">
+        <div class="max-width">
+            <h2 class="title">My services</h2>
+            <div class="serv-content">
+                <div class="card">
+                    <div class="box">
+                        <i class="fas fa-paint-brush"></i>
+                        <div class="text">Saas</div>
+                        <p>Provides end to end digital solution to the problem</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <i class="fas fa-chart-line"></i>
+                        <div class="text">Cloud Solution</div>
+                        <p>Providing cloud based solution and scale your application.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <i class="fas fa-handshake"></i>
+                        <div class="text">IT Consultant</div>
+                        <p>Providing solution for technology challenges.</p>
+                    </div>
+                </div>
+               </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- skills section start -->
+    <section class="skills" id="skills">
+        <div class="max-width">
+            <h2 class="title">My skills</h2>
+            <div class="skills-content">
+                <div class="column left">
+                    <div class="text">My creative skills & experiences.</div>
+                        <b>Backend: </b> Java | Spring Boot | Microservices | Rest API | Node.js | GraphQL | Gradle | Maven | JPA | Hibernate | Junit <br>
+                        <b>Frontend: </b>F Javascript | React.js | Next.js | MaterialUI | Redux <br>
+                        <b>Database: </b> Postgresql | MongoDB | H2 | Redis | S3 <br>
+                        <b>AI: </b> GenAI | RAG | LLM | AWS BKB | CoT | Python | LangChain | Pandas | scikit-learn <br>
+                        <b>DevOps & Cloud: </b> Kubernetes | AWS(EC2 | Lambda | Subnets | API Gateway | Step Functions | WAF etc) | Azure | Terraform | Docker | Helm | ArgoCD | Git | Gitlab | JIRA | Jenkins <br>
+                        <b>Monitoring:</b> Prometheus | Grafana | Logstash | ElasticSearch | Kibana | CloudWatch <br>
+                    </p>
+                </div>
+                <div class="column right">
+                    <div class="bars">
+                        <div class="info">
+                            <span>Java</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="line js"></div>
+                    </div>
+                    <div class="bars">
+                        <div class="info">
+                            <span>Javascript</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="line python"></div>
+                    </div>
+                    <div class="bars">
+                        <div class="info">
+                            <span>PostgreSQL</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="line mysql"></div>
+                    </div>
+                    <div class="bars">
+                        <div class="info">
+                            <span>MongoDB</span>
+                            <span>50%</span>
+                        </div>
+                        <div class="line mongodb"></div>
+                    </div>
+                    <div class="bars">
+                        <div class="info">
+                            <span>AWS</span>
+                            <span>50%</span>
+                        </div>
+                        <div class="line cloud"></div>
+                    </div>
+                    <div class="bars">
+                        <div class="info">
+                            <span>System Design</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="line system-design"></div>
+                    </div>
+                    <div class="bars">
+                        <div class="info">
+                            <span>Redis</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="line redis"></div>
+                    </div>
+                    <div class="bars">
+                        <div class="info">
+                            <span>Web Security</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="line web-security"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline" id="timeline">
+        <ol>
+          <li>
+            <div>
+              <time>Sep, 2020</time> Joined Publicis Sapient as Associative Software developer I.
+            </div>
+          </li>
+          <li>
+            <div>
+               <time>Dec, 2021</time> Promoted to Publicis Sapient as Associative Software developer II.
+            </div>
+          </li> 
+          <li>
+            <div>
+                <time>October, 2022</time> Joined Appian as Software Engineer II.
+            </div>
+          </li>
+        </ol>
         
-    </table>
-    <hr>
-    <h1>Projects</h1>
-    <b>Production of electricity requirement in India in Jupyter Notebook</b>
-    <br>
-    <p>Build a Time series model to predict future power requirement of india
-        which can be used for all countries by making necessary changes.
-    </p>
-    <b>Development of Robotic Sewage Cleaner</b>
-    <br>
-    <p>It can used to clean manhole with minimum human intervention. 
-        Aimed at eradicating the human deaths due to manhole cleaning.
-    </p>
-    <hr>
+        <div class="arrows">
+          <button class="arrow arrow__prev disabled" disabled>
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow_prev.svg" alt="prev timeline arrow">
+          </button>
+          <button class="arrow arrow__next">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow_next.svg" alt="next timeline arrow">
+          </button>
+        </div>
+      </section>
 
-    <h1>Positions of Responsiblity</h1>
-    <ul>
-        <li>Worked as Branch Representative of Prodction Engineering</li>
-        <li>Event manager of Crime Scence Investigation a competition conducted
-            as a part of TATHVA'19
-        </li>
-        <li>Part of NITC VOLLEYBALL during 2016-20</li>
-    </ul>
-    <hr>
-    <h1>Personal Qualifications</h1>
-    <ul>
-        <li>Eager to learn new technologies and methodologies</li>
-        <li>Always willing to innovate the new things which can improve the existing 
-            Technology.
-        </li>
-        <li>Strongly Determined</li>
-    </ul>
-<hr>
 
-   <p>I here by declare that the above information is true 
-       to the best of my knowledge and behalf
-       <br>
-       NAPA SAI MANOJ
-   </p>
-   <b><a href="contact.html" >Contact details</a></b>
+    <!-- contact section start -->
+    <section class="contact" id="contact">
+        <div class="max-width">
+            <h2 class="title">Contact me</h2>
+            <div class="contact-content">
+                <div class="column left">
+                    <div class="text">Get in Touch</div>
+                    <p></p>
+                    <div class="icons">
+                        <div class="row">
+                            <i class="fas fa-user"></i>
+                            <div class="info">
+                                <div class="head">Name</div>
+                                <div class="sub-title">Sai Manoj</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="info">
+                                <div class="head">Address</div>
+                                <div class="sub-title">Nellore, Andhra Pradesh</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <i class="fas fa-envelope"></i>
+                            <div class="info">
+                                <div class="head">Email</div>
+                                <div class="sub-title">saimanoj.napa@gmail.com</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column right">
+                    <div class="icons">
+                        <div class="row">
+                            <i class="fa fa-linkedin"></i>
+                            <div class="info">
+                                <div class="head"><a href="https://www.linkedin.com/in/sai-manoj-205a78145/" >Linkedin</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="icons">
+                        <div class="row">
+                            <i class="fa fa-github"></i>
+                            <div class="info">
+                                <div class="head"><a href="https://github.com/saimanojsuper" >GitHub</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer section start -->
+    <footer>
+        <span>Created By <a href="#">Sai Manoj Napa</a> | <span class="far fa-copyright"></span> 2025 All rights reserved.</span>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
-
-
-
 </html>
