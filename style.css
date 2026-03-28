@@ -169,7 +169,7 @@ section .title::after {
 /* home section styling */
 .home {
   display: flex;
-  background: url("./images/mtw7kncv7yh81.gif") no-repeat center;
+  background: linear-gradient(135deg, #1a0a2e 0%, #16213e 50%, #0f3460 100%);
   height: 100vh;
   color: #fff;
   min-height: 500px;

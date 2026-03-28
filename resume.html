@@ -1,82 +1,300 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>SAI MANOJ NAPA RESUME</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saimanoj Napa - Resume</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <style>
+        /* Resume sections using site theme */
+        .resume-section { padding: 60px 0; font-family: 'Poppins', sans-serif; }
+        .resume-section.dark { background: #111; color: #fff; }
+        .resume-section.light { background: #fff; color: #111; }
+        .resume-section .title { position: relative; text-align: center; font-size: 40px; font-weight: 500; margin-bottom: 40px; padding-bottom: 20px; font-family: 'Ubuntu', sans-serif; }
+        .resume-section .title::before { content: ""; position: absolute; bottom: 0; left: 50%; width: 180px; height: 3px; background: crimson; transform: translateX(-50%); }
+        .resume-section .title::after { position: absolute; bottom: -8px; left: 50%; font-size: 20px; color: crimson; padding: 0 5px; transform: translateX(-50%); }
+        .resume-section.dark .title::after { background: #111; }
+        .resume-section.light .title::after { background: #fff; }
+
+        /* Skills cards */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+        .skill-card { background: #222; padding: 18px 22px; border-radius: 6px; transition: all 0.3s ease; }
+        .skill-card:hover { background: crimson; }
+        .skill-card .label { font-weight: 600; color: crimson; display: block; margin-bottom: 5px; font-size: 1.05em; transition: color 0.3s ease; }
+        .skill-card:hover .label { color: #fff; }
+        .skill-card .values { font-size: 0.92em; color: #ccc; }
+        .skill-card:hover .values { color: #fff; }
+
+        /* Experience */
+        .job { margin-bottom: 30px; background: #222; border-radius: 6px; padding: 25px 30px; transition: all 0.3s ease; }
+        .light .job { background: #f5f5f5; }
+        .job-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
+        .company { font-weight: 700; font-size: 1.2em; }
+        .date { color: crimson; font-weight: 500; white-space: nowrap; }
+        .role-header { display: flex; justify-content: space-between; align-items: baseline; margin: 12px 0 6px; }
+        .role { font-weight: 600; font-style: italic; color: crimson; }
+        .role-date { color: #aaa; font-style: italic; }
+        .light .role-date { color: #666; }
+        .job ul { margin: 8px 0 8px 22px; }
+        .job ul li { margin-bottom: 5px; font-size: 0.93em; line-height: 1.5; }
+        .tech-stack { font-size: 0.85em; color: #999; margin-top: 8px; padding-top: 8px; border-top: 1px solid #333; }
+        .light .tech-stack { border-top-color: #ddd; color: #777; }
+
+        /* Education */
+        .edu-card { background: #222; border-radius: 6px; padding: 25px 30px; max-width: 600px; margin: 0 auto; }
+        .edu-header { display: flex; justify-content: space-between; align-items: baseline; }
+        .edu-header strong { font-size: 1.15em; }
+        .edu-detail { display: flex; justify-content: space-between; margin-top: 5px; color: #ccc; }
+
+        /* Awards */
+        .award-list { list-style: none; max-width: 700px; margin: 0 auto; }
+        .award-list li { padding: 10px 15px; margin-bottom: 8px; background: #f5f5f5; border-radius: 6px; font-size: 0.95em; border-left: 3px solid crimson; }
+
+        /* Projects */
+        .project-list { list-style: none; }
+        .project-list li { padding: 15px 20px; margin-bottom: 10px; background: #222; border-radius: 6px; font-size: 0.93em; line-height: 1.5; transition: all 0.3s ease; }
+        .project-list li:hover { background: #333; }
+        .project-list li strong { color: crimson; }
+
+        /* Contact */
+        .contact .contact-content .left p { text-align: justify; }
+        .contact .contact-content .row { display: flex; height: 65px; align-items: center; }
+        .contact .contact-content .row .info { margin-left: 30px; }
+        .contact .contact-content .row i { font-size: 25px; color: crimson; }
+        .contact .contact-content .info .head { font-weight: 500; }
+        .contact .contact-content .info .sub-title { color: #ccc; }
+        .light.contact .contact-content .info .sub-title { color: #555; }
+
+        @media (max-width: 690px) {
+            .job-header, .role-header, .edu-header, .edu-detail { flex-direction: column; }
+            .skills-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-
 <body>
-    <table cellspacing="10"><tr>
-   <td> <img src="sai.jpeg" width="200" height="200"></td>
-   <td> <b>NAPA SAI MANOJ</b>
-       <br>
-       Presently Studying Production Engineering in the NIT Calicut
-   </td>
-</tr>
-</table>
-<hr>
-    <h1>Education</h1>
-    <table cellspacing="10">
-        <tr>
-            <td>2016-2020</td>
-            <td><b>Bachelor of Technology</b> <i>Production Engineering,</i> <br>
-                National Institute of Technology,Calicut. <i>7.5(upto 6th Sem)</i>
-            </td>
-        </tr>
-        <tr>
-            <td>2016</td>
-            <td><b>Class XII</b> <br>
-                Narayana Junior College, Stonehouse Peta, <i>97.9%</i>
-            </td>
-        </tr>
-        <tr>
-            <td>2014</td>
-            <td><b>Class X</b> <br>
-                Z.P. High School ,Narayana Reddy Peta. <i>9.3/10</i>
-            </td>
-        </tr>
-        
-    </table>
-    <hr>
-    <h1>Projects</h1>
-    <b>Production of electricity requirement in India in Jupyter Notebook</b>
-    <br>
-    <p>Build a Time series model to predict future power requirement of india
-        which can be used for all countries by making necessary changes.
-    </p>
-    <b>Development of Robotic Sewage Cleaner</b>
-    <br>
-    <p>It can used to clean manhole with minimum human intervention. 
-        Aimed at eradicating the human deaths due to manhole cleaning.
-    </p>
-    <hr>
 
-    <h1>Positions of Responsiblity</h1>
-    <ul>
-        <li>Worked as Branch Representative of Prodction Engineering</li>
-        <li>Event manager of Crime Scence Investigation a competition conducted
-            as a part of TATHVA'19
-        </li>
-        <li>Part of NITC VOLLEYBALL during 2016-20</li>
-    </ul>
-    <hr>
-    <h1>Personal Qualifications</h1>
-    <ul>
-        <li>Eager to learn new technologies and methodologies</li>
-        <li>Always willing to innovate the new things which can improve the existing 
-            Technology.
-        </li>
-        <li>Strongly Determined</li>
-    </ul>
-<hr>
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="max-width">
+        <div class="logo"><a href="#">Sai<span>manoj</span></a></div>
+        <ul class="menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#skills-sec">Skills</a></li>
+            <li><a href="#experience-sec">Experience</a></li>
+            <li><a href="#education-sec">Education</a></li>
+            <li><a href="#awards-sec">Awards</a></li>
+            <li><a href="#projects-sec">Projects</a></li>
+            <li><a href="#blogs-sec">Blogs</a></li>
+            <li><a href="#contact-sec">Contact</a></li>
+        </ul>
+        <div class="menu-btn"><i class="fas fa-bars"></i></div>
+    </div>
+</nav>
 
-   <p>I here by declare that the above information is true 
-       to the best of my knowledge and behalf
-       <br>
-       NAPA SAI MANOJ
-   </p>
-   <b><a href="contact.html" >Contact details</a></b>
+<!-- Home Section -->
+<section class="home" id="home">
+    <div class="max-width">
+        <div class="home-content">
+            <div class="text-1">Hello, I'm</div>
+            <div class="text-2">Saimanoj Napa</div>
+            <div class="text-3">And I'm a <span class="typing"></span></div>
+            <p style="color:#fff; max-width:700px; margin-top:15px; font-size:16px; line-height:1.6; font-family:'Poppins',sans-serif;">
+                Senior Software Engineer with 6+ years of experience building scalable, event-driven microservices and GenAI-powered SaaS platforms. Passionate about solving complex distributed systems challenges, optimizing performance, and leveraging AI to deliver high-impact products.
+            </p>
+            <a href="#skills-sec">Know More About Me</a>
+        </div>
+    </div>
+</section>
+
+<!-- Skills -->
+<section class="resume-section dark" id="skills-sec">
+    <div class="max-width">
+        <div class="title">Skills</div>
+        <div class="skills-grid">
+            <div class="skill-card"><span class="label">Backend</span><span class="values">Java, Apache Kafka, Spring Boot, Microservices, Rest API, Node.js, GraphQL, Gradle, Maven, JPA, Hibernate</span></div>
+            <div class="skill-card"><span class="label">Frontend</span><span class="values">Javascript, React.js, Next.js, MaterialUI, Redux</span></div>
+            <div class="skill-card"><span class="label">Database</span><span class="values">Postgresql, MongoDB, OpenSearch, H2, Redis, S3</span></div>
+            <div class="skill-card"><span class="label">AI</span><span class="values">GenAI, MCP, RAG, LLM, AWS BKB, CoT, Python, LangChain, Pandas, scikit-learn</span></div>
+            <div class="skill-card"><span class="label">DevOps &amp; Cloud</span><span class="values">Kubernetes, AWS, Azure, Terraform, Docker, Helm, ArgoCD, Jenkins, Git, Gitlab, JIRA</span></div>
+            <div class="skill-card"><span class="label">Monitoring</span><span class="values">Prometheus, Grafana, Logstash, ElasticSearch, Kibana, CloudWatch</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- Work Experience -->
+<section class="resume-section light" id="experience-sec">
+    <div class="max-width">
+        <div class="title">Work Experience</div>
+
+        <div class="job">
+            <div class="job-header">
+                <span class="company">Appian, Chennai</span>
+                <span class="date">Oct 2022 - Present</span>
+            </div>
+            <div class="role-header">
+                <span class="role">Senior Software Engineer</span>
+                <span class="role-date">Apr 2026 - Present</span>
+            </div>
+            <ul>
+                <li>Optimized database sync performance by 90% resolving N+1 fetch problems in cross-database data synchronization.</li>
+                <li>Architected and led the development of a GenAI-powered ProcureSight SaaS platform, delivering semantic search and AI-generated vendor insights, generating $1M in Q1 revenue with $10M projected by EOP 2026.</li>
+                <li>Scaled search service capacity 4x (from 25 to 100 concurrent users), eliminating frequent >30 second timeouts and achieving stable performance of 200 requests/sec at 0.5 second latency.</li>
+            </ul>
+            <div class="role-header">
+                <span class="role">Software Engineer II</span>
+                <span class="role-date">Oct 2022 - Mar 2026</span>
+            </div>
+            <ul>
+                <li>Migrated Transaction Manager to Spring, reducing database connection usage by 50% across all environments, optimizing read/write traffic routing, and doubling system scalability validated by Locust load tests.</li>
+                <li>Led Avro Serializer integration and defined a Confluent Schema Evolution strategy for event consumers, enabling onboarding of three large beta customers processing 1800 events per minute.</li>
+                <li>Built a resilient, parallel-processing data ingestion orchestrator (SOLID design) that handles 36 daily jobs, ingesting ~20k records and 5k documents, with a real time monitoring dashboard ensuring data integrity and SOC2 compliance.</li>
+                <li>Automating the deployment process with GitLab Pipeline, ArgoCD, Liquibase, and SonarQube reduced deployment time by 75%, from 2hrs to just 30 mins, eliminating manual intervention.</li>
+                <li>Introduced an Episodic Memory approach for Vendor Award Summary generation (covering 1M vendors and 100M awards), which reduced LLM operational costs by 50% ($10K savings potential) and significantly simplified quarterly data reloads.</li>
+                <li>Accelerated Appian's multilingual app development by 90%+ with a new translation design object handling versioning, IA, IX, lozenge, compare and deploy.</li>
+            </ul>
+            <div class="tech-stack">GenAI, RAG, LLM, OpenAI, AWS BedRock models, Spring Boot, Java, Kafka, Python, Lambda, Aurora PSQL, S3, BedRock, Secret Manager, CloudWatch, API Gateway, Step Functions, WAF, Grafana, Prometheus, Docker, Kubernetes, Helm, ArgoCD, SAIL, JIRA</div>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <span class="company">Publicis Sapient, Bangalore</span>
+                <span class="date">Sep 2020 - Sep 2022</span>
+            </div>
+            <div class="role-header">
+                <span class="role">Associative Software Developer 2</span>
+                <span class="role-date">Dec 2021 - Sep 2022</span>
+            </div>
+            <ul>
+                <li>A Successful POC for a Global Experience Platform (GXP) supporting multiple Stellantis brand websites across APAC, the Middle East, and NA secured a $10M contract for product migration.</li>
+                <li>Eliminated weeks-long onboarding delays for new markets by integrating Model Compare and Financial Calculator pages with an extensible, no-code solution. Onboarded APAC and Middle East market in 2 days.</li>
+            </ul>
+            <div class="tech-stack">AEM, Spring boot Java, React.js, Azure App, Azure DevOps, Maven, Docker, SonarQube, GraphQl, jQuery, Kubernetes, Helm, Jenkins, BitBucket, JIRA, Confluence, nx</div>
+            <div class="role-header">
+                <span class="role">Associative Software Developer 1</span>
+                <span class="role-date">Sep 2020 - Nov 2021</span>
+            </div>
+            <ul>
+                <li>Developed a utility to streamline data extraction from Product Catalog files (raw txt), and provided interface in AEM to address missing data. Reduced vehicle data generation time from a week to few minutes.</li>
+                <li>Boosted website traffic by 80% and sales by 50% within three months by integrating the Jeep APAC Build &amp; Price configurator. Accelerated Middle East market onboarding to just 2 days.</li>
+                <li>Automated advance booking process by eliminating manual intervention and processing time using PayU payments gateway and CarDekho.</li>
+            </ul>
+            <div class="tech-stack">AEM, Spring boot Java, React.js, Swagger, PHP, MicroServices, Azure App, Azure DevOps, Maven, Docker, Jenkins, BitBucket, JIRA, Confluence</div>
+        </div>
+    </div>
+</section>
+
+<!-- Education -->
+<section class="resume-section dark" id="education-sec">
+    <div class="max-width">
+        <div class="title">Education</div>
+        <div class="edu-card">
+            <div class="edu-header">
+                <strong>NIT Calicut</strong>
+                <span class="date">July 2016 - July 2020</span>
+            </div>
+            <div class="edu-detail">
+                <span>B.Tech Production Engineering</span>
+                <strong style="color:crimson;">CGPA: 7.64/10</strong>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Awards -->
+<section class="resume-section light" id="awards-sec">
+    <div class="max-width">
+        <div class="title">Awards &amp; Certificates</div>
+        <ul class="award-list">
+            <li>Got the <strong>Impact Award</strong> for Innovation (POC's in GenAI) in Q1 2025</li>
+            <li>Achieved the <strong>Value Award</strong> for exceptional collaboration in Q4 2024</li>
+            <li>IBM Data Science Professional Certificate Specialization</li>
+            <li>The Complete 2020 Web Development Bootcamp</li>
+            <li>Microsoft Azure Fundamentals (AZ-900)</li>
+            <li>Developing Solutions for Microsoft Azure (AZ-204)</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Projects -->
+<section class="resume-section dark" id="projects-sec">
+    <div class="max-width">
+        <div class="title">Hackathon &amp; Learning Projects</div>
+        <ul class="project-list">
+            <li onclick="window.open('https://github.com/saimanojsuper/NavaYugNews','_blank')" style="cursor:pointer;"><strong>Navayug News (2024):</strong> Built a RESTFUL API for news articles using Spring Boot handling authentication, caching, fault tolerance following circuit breaker pattern. Also created a basic UI in React.js for reading news articles.</li>
+            <li><strong>Covi Buddy App (2022):</strong> Developed a mobile application to connect Samaritans with those in need during the pandemic. Utilized declarative programming (Java) and leveraged Google Firebase for database management.</li>
+            <li onclick="window.open('https://github.com/saimanojsuper/OTTMovies','_blank')" style="cursor:pointer;"><strong>OTT Movie Search Engine (2022):</strong> Developed a responsive web application for cross-platform movie search. Implemented efficient filtering mechanisms using HTML, CSS, and JavaScript with throttling and debouncing techniques.</li>
+            <li><strong>Teams Recognition Extension (2021):</strong> Enhanced employee recognition within Microsoft Teams by integrating a Spring Boot Java application. Gained proficiency in Microsoft Graph API and MongoDB.</li>
+            <li onclick="window.open('https://github.com/saimanojsuper/Capstone-Project-for-Electrification','_blank')" style="cursor:pointer;"><strong>Electricity Demand Forecasting (2019):</strong> Developed a predictive model for electricity demand using machine learning and time series algorithms. Utilized Jupyter Notebook and Python libraries (Pandas, NumPy, Scikit-learn).</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Blogs -->
+<section class="resume-section light" id="blogs-sec">
+    <div class="max-width">
+        <div class="title">Blogs</div>
+        <ul class="award-list">
+            <li onclick="window.open('https://www.linkedin.com/posts/sai-manoj-napa-205a78145_github-saimanojsuperrate-limiter-redis-activity-7441811720651747328-d48e','_blank')" style="cursor:pointer;"><strong>Redis Beats Postgres in Rate Limiting Benchmark</strong> — Redis vs Postgres comparison for rate-limiting counters with benchmarking results</li>
+            <li onclick="window.open('https://www.linkedin.com/posts/sai-manoj-napa-205a78145_kiro-specdrivendevelopment-amazonq-activity-7375488491985612800-LGqU','_blank')" style="cursor:pointer;"><strong>Experience with Spec Driven Development using Kiro</strong> — Hands-on experience building with Spec Driven Development approach</li>
+            <li onclick="window.open('https://www.linkedin.com/posts/sai-manoj-napa-205a78145_genai-llm-rag-activity-7306668336031879168-Jj6s','_blank')" style="cursor:pointer;"><strong>GenAI Basics — LLM, RAG, CoT &amp; Fine-Tuning</strong> — Fundamentals of Generative AI covering LLMs, RAG, Chain of Thought, and Fine-Tuning</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="resume-section dark contact" id="contact-sec">
+    <div class="max-width">
+        <div class="title">Contact Me</div>
+        <div class="contact-content">
+            <div class="column left">
+                <div class="icons">
+                    <div class="row">
+                        <i class="fas fa-envelope"></i>
+                        <div class="info">
+                            <div class="head">Email</div>
+                            <div class="sub-title"><a href="mailto:saimanoj.napa@gmail.com" style="color:crimson;">saimanoj.napa@gmail.com</a></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <i class="fas fa-mobile-alt"></i>
+                        <div class="info">
+                            <div class="head">Phone</div>
+                            <div class="sub-title">+91-8185886131</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <i class="fab fa-github"></i>
+                        <div class="info">
+                            <div class="head">GitHub</div>
+                            <div class="sub-title"><a href="https://github.com/saimanojsuper" style="color:crimson;">github.com/saimanojsuper</a></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <i class="fab fa-linkedin"></i>
+                        <div class="info">
+                            <div class="head">LinkedIn</div>
+                            <div class="sub-title"><a href="https://linkedin.com/in/sai-manoj-napa-205a78145/" style="color:crimson;">linkedin.com/in/sai-manoj-napa-205a78145</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Scroll Up Button -->
+<div class="scroll-up-btn"><i class="fas fa-angle-up"></i></div>
+
+<!-- Footer -->
+<footer>
+    <span>Created by <a href="https://github.com/saimanojsuper">Saimanoj Napa</a> | &copy; 2026</span>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="script.js"></script>
 </body>
-
-
-
 </html>
