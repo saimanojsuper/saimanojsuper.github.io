@@ -8,10 +8,12 @@ function RouteContents({ plan, onDay }: { plan: TripPlan; onDay(dayNumber: numbe
       <ol className="route-summary-list">
         {stops.map((stop) => {
           const stopDays = plan.days.filter((day) => day.routeStopId === stop.id).sort((a, b) => a.dayNumber - b.dayNumber)
+          const foodCount = plan.foodEntries.filter((entry) => entry.routeStopId === stop.id).length
           return (
             <li key={stop.id}>
               <span className="route-dot" />
               <div><strong>{stop.city}</strong><small>{stop.startDate} – {stop.endDate}</small>
+                {foodCount > 0 && <small>{foodCount} must-taste items</small>}
                 <div className="summary-day-links">{stopDays.map((day) => <button key={day.id} type="button" onClick={() => onDay(day.dayNumber)}>Day {day.dayNumber}</button>)}</div>
               </div>
             </li>

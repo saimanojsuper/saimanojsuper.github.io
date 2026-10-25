@@ -1,0 +1,61 @@
+.food-filters { display: grid; grid-template-columns: minmax(10rem, 1fr) minmax(12rem, 1fr) auto; align-items: end; gap: 1rem; margin-bottom: 1rem; padding: 1rem; }
+.food-filters p { margin: 0 0 0.7rem; color: var(--muted); font-size: 0.75rem; }
+.food-list { display: grid; gap: 0.75rem; }
+.food-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; border: 1px solid var(--line); border-left: 4px solid #d2913b; border-radius: 1rem; padding: 1rem; background: var(--paper); box-shadow: var(--shadow); }
+.food-card.status-done { border-left-color: #2b7a4b; background: #f4faf6; }
+.food-card.status-skipped { border-left-color: #999; opacity: 0.72; }
+.food-title-row { display: flex; align-items: start; justify-content: space-between; gap: 1rem; }
+.food-title-row h3 { margin: 0; font-size: 1.25rem; letter-spacing: -0.02em; }
+.food-title-row > strong { color: var(--green); white-space: nowrap; }
+.food-location { margin: 0.45rem 0 0; color: var(--muted); font-size: 0.78rem; }
+.food-notes { margin: 0.6rem 0; color: var(--muted); line-height: 1.5; }
+.food-card-main > a { color: var(--green); font-size: 0.78rem; font-weight: 800; }
+.food-card-actions { display: flex; align-items: center; gap: 0.45rem; }
+.food-card-actions select { width: auto; min-width: 6.5rem; }
+.food-card-actions .text-button { padding: 0.5rem; }
+.empty-food { display: flex; flex-direction: column; gap: 0.25rem; padding: 2rem; color: var(--muted); text-align: center; }
+.food-editor { width: min(100%, 44rem); }
+.food-form { margin-top: 1rem; }
+.day-food-context { display: grid; grid-template-columns: auto 1fr; align-items: start; gap: 0.8rem; border-bottom: 1px solid var(--line); padding: 0.75rem 1.15rem; background: #fff8eb; }
+.day-food-context > strong { color: #7a541e; font-size: 0.75rem; text-transform: uppercase; }
+.day-food-context > div { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.day-food-context span { display: flex; gap: 0.35rem; border-radius: 999px; padding: 0.3rem 0.5rem; color: #684818; background: #f6e4bf; font-size: 0.72rem; font-weight: 800; }
+.day-food-context span.status-done { color: #205d3c; background: #dcecdf; }
+.day-food-context span.status-skipped { opacity: 0.55; text-decoration: line-through; }
+.day-food-context small { font-weight: 500; }
+.budget-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem; }
+.budget-card { display: grid; gap: 0.5rem; min-height: 8rem; padding: 1.2rem; }
+.budget-card span { color: var(--muted); font-size: 0.75rem; font-weight: 750; text-transform: uppercase; }
+.budget-card strong { align-self: end; font-size: clamp(1.6rem, 4vw, 2.5rem); letter-spacing: -0.04em; }
+.budget-card.target-card { color: white; border-color: var(--green); background: var(--green); }
+.budget-card.target-card span { color: #d6ede2; }
+.budget-card.combined-cost { border-color: #9eb9aa; background: #edf5f0; }
+.budget-card.over-budget { color: #8b2828; border-color: #d8a1a1; background: #fff4f3; }
+.budget-progress { height: 0.65rem; margin: 1rem 0; border-radius: 999px; overflow: hidden; background: #dfe1dc; }
+.budget-progress span { display: block; height: 100%; border-radius: inherit; background: var(--green); transition: width 200ms ease; }
+.budget-editor-panel { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 1rem; margin-top: 1rem; padding: 1.2rem; }
+.budget-editor-panel h3 { margin: 0; }
+.budget-editor-panel p { margin: 0.3rem 0 0; color: var(--muted); }
+.budget-target-editor { display: flex; align-items: end; gap: 0.6rem; }
+.budget-target-editor label { min-width: 15rem; }
+.budget-disclosure { margin-top: 1rem; border: 1px dashed #a9b5ad; border-radius: 0.9rem; padding: 1rem; color: var(--muted); font-size: 0.82rem; }
+.budget-disclosure strong { color: var(--ink); }
+.budget-disclosure p { margin: 0.35rem 0 0; line-height: 1.55; }
+
+@media (max-width: 900px) {
+  .food-card { grid-template-columns: 1fr; }
+  .food-card-actions { flex-wrap: wrap; }
+  .budget-grid { grid-template-columns: 1fr; }
+  .budget-card { min-height: 6rem; }
+}
+
+@media (max-width: 680px) {
+  .food-filters { grid-template-columns: 1fr; }
+  .food-filters p { margin: 0; }
+  .food-card-actions { align-items: stretch; flex-direction: column; }
+  .food-card-actions select { width: 100%; }
+  .day-food-context { grid-template-columns: 1fr; }
+  .budget-editor-panel { grid-template-columns: 1fr; }
+  .budget-target-editor { align-items: stretch; flex-direction: column; }
+  .budget-target-editor label { min-width: 0; }
+}

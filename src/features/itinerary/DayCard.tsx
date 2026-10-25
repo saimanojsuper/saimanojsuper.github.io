@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import type { Activity, ActivitySlot, ItemStatus, RouteStop, TripDay } from '../../types/trip'
+import type { Activity, ActivitySlot, FoodEntry, ItemStatus, RouteStop, TripDay } from '../../types/trip'
 import { ACTIVITY_SLOTS } from '../../types/trip'
 import { TimeSlotSection } from './TimeSlotSection'
 
@@ -8,6 +8,7 @@ interface DayCardProps {
   stop: RouteStop
   activities: Activity[]
   conflictIds: Set<string>
+  foodEntries: FoodEntry[]
   onAdd(slot: ActivitySlot): void
   onDayUpdate(update: Pick<TripDay, 'notes' | 'isLeisure'>): void
   onDelete(activity: Activity): void
@@ -32,6 +33,13 @@ export function DayCard(props: DayCardProps) {
       </header>
 
       {activities.length === 0 && day.isLeisure && <div className="leisure-state"><strong>At leisure</strong><span>No plans. That is a plan too.</span></div>}
+
+      {props.foodEntries.length > 0 && (
+        <section className="day-food-context" aria-label={`Must-taste items for day ${day.dayNumber}`}>
+          <strong>Must taste</strong>
+          <div>{props.foodEntries.map((entry) => <span key={entry.id} className={`status-${entry.status}`}>{entry.dish}<small>{entry.mealType}{entry.dayId ? '' : ' · any day'}</small></span>)}</div>
+        </section>
+      )}
 
       <div className="day-notes">
         <label>Day notes<textarea rows={2} placeholder="Reservations, reminders, or the vibe for today…" value={notes} onChange={(event) => setNotes(event.target.value)} /></label>

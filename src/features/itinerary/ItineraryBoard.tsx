@@ -18,6 +18,7 @@ import {
   updateActivity,
 } from '../../domain/activityMutations'
 import { userFacingError } from '../../domain/errorMessage'
+import { foodEntriesForDay } from '../../domain/foodMutations'
 import { createStableId } from '../../domain/id'
 import { updateTripDay } from '../../domain/itineraryMutations'
 import { conflictingActivityIds } from '../../domain/timeConflicts'
@@ -122,6 +123,7 @@ export function ItineraryBoard({ plan }: { plan: TripPlan }) {
               stop={stopsById.get(day.routeStopId)!}
               activities={plan.activities.filter((activity) => activity.dayId === day.id)}
               conflictIds={conflictIds}
+              foodEntries={foodEntriesForDay(plan.foodEntries, day)}
               onAdd={(slot) => setEditor({ activity: newActivity(day, slot), isNew: true })}
               onDayUpdate={(update) => commit(() => updateTripDay(plan, day.id, update, new Date().toISOString()))}
               onDelete={(activity) => {

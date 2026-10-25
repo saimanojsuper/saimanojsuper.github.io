@@ -3,7 +3,7 @@ import { selectCanRedo, selectCanUndo } from '../../store/selectors'
 import { tripStore } from '../../store/tripStore'
 import type { TripPlan } from '../../types/trip'
 
-export type PlannerSection = 'route' | 'itinerary'
+export type PlannerSection = 'route' | 'itinerary' | 'food' | 'budget'
 
 export function PlannerLayout({
   plan,
@@ -35,8 +35,8 @@ export function PlannerLayout({
       <nav className="planner-nav" aria-label="Planner sections">
         <button type="button" className={activeSection === 'route' ? 'active' : ''} onClick={() => onSectionChange('route')}>Route</button>
         <button type="button" className={activeSection === 'itinerary' ? 'active' : ''} onClick={() => onSectionChange('itinerary')}>Itinerary</button>
-        <button type="button" disabled>Food <small>Future</small></button>
-        <button type="button" disabled>Budget <small>Future</small></button>
+        <button type="button" className={activeSection === 'food' ? 'active' : ''} onClick={() => onSectionChange('food')}>Food</button>
+        <button type="button" className={activeSection === 'budget' ? 'active' : ''} onClick={() => onSectionChange('budget')}>Budget</button>
       </nav>
       <details className="mobile-route-summary"><summary>Route summary · {plan.routeStops.length} destinations</summary>{routePanel}</details>
       <div className="planner-grid"><section className="planner-content">{children}</section><div className="desktop-aside">{routePanel}</div></div>
