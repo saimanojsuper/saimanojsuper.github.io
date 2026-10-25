@@ -14,26 +14,22 @@ import { DayResolutionDialog } from '../../components/DayResolutionDialog'
 import { scheduleStopsByDuration } from '../../domain/dateAllocation'
 import { userFacingError } from '../../domain/errorMessage'
 import { createStableId } from '../../domain/id'
+import { applyArrivalDepartureEvents } from '../../domain/tripExtension'
 import {
   addRouteStop,
   deleteRouteStop,
   editRouteStops,
   type RouteChangeDraft,
 } from '../../domain/routeMutations'
-import { selectCanRedo, selectCanUndo } from '../../store/selectors'
 import { tripStore } from '../../store/tripStore'
 import type { TravelLeg, TripPlan } from '../../types/trip'
 import { ArrivalDepartureEditor } from './ArrivalDepartureEditor'
 import { RouteStopCard } from './RouteStopCard'
 import { TravelLegEditor } from './TravelLegEditor'
+import { TripDurationEditor } from './TripDurationEditor'
 
 export function RouteTimeline({ plan }: { plan: TripPlan }) {
   const replacePlan = useStore(tripStore, (state) => state.replacePlan)
-  const undo = useStore(tripStore, (state) => state.undo)
-  const redo = useStore(tripStore, (state) => state.redo)
-  const canUndo = useStore(tripStore, selectCanUndo)
-  const canRedo = useStore(tripStore, selectCanRedo)
-  const storageError = useStore(tripStore, (state) => state.ui.lastStorageError)
   const [routeDraft, setRouteDraft] = useState(() => [...plan.routeStops].sort((a, b) => a.order - b.order))
   const [pending, setPending] = useState<RouteChangeDraft | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -92,7 +88,7 @@ export function RouteTimeline({ plan }: { plan: TripPlan }) {
 
   function updateEvents(events: TripPlan['arrivalDepartureEvents']) {
     try {
-      replacePlan({ ...plan, metadata: { ...plan.metadata, updatedAt: new Date().toISOString() }, arrivalDepartureEvents: events })
+      replacePlan(applyArrivalDepartureEvents(plan, events, new Date().toISOString()))
       setError(null)
     } catch (caught) {
       setError(userFacingError(caught, 'Route event is invalid.'))
@@ -102,22 +98,10 @@ export function RouteTimeline({ plan }: { plan: TripPlan }) {
   const orderedStops = [...plan.routeStops].sort((a, b) => a.order - b.order)
 
   return (
-    <main className="planner-shell">
-      <header className="planner-header">
-        <div>
-          <p className="eyebrow">Route builder</p>
-          <h1>{plan.metadata.title}</h1>
-          <p>{plan.metadata.startDate} → {plan.metadata.endDate} · {plan.days.length} days</p>
-        </div>
-        <div className="history-actions">
-          <button className="button secondary small" type="button" disabled={!canUndo} onClick={undo}>Undo</button>
-          <button className="button secondary small" type="button" disabled={!canRedo} onClick={redo}>Redo</button>
-        </div>
-      </header>
-
-      {plan.metadata.coverImageUrl && <img className="cover-image" src={plan.metadata.coverImageUrl} alt="" />}
-      {storageError && <p className="warning-banner">Draft could not be saved locally: {storageError}</p>}
+    <div className="route-workspace">
+      <div className="workspace-heading"><div><p className="eyebrow">Route builder</p><h2>Destinations & travel</h2><p>Edit the route, travel legs, and arrival or departure details.</p></div></div>
       {error && <p className="form-error global-error" role="alert">{error}</p>}
+      <TripDurationEditor plan={plan} />
 
       <section className="panel route-section">
         <div className="section-heading">
@@ -166,9 +150,7 @@ export function RouteTimeline({ plan }: { plan: TripPlan }) {
         </section>
       )}
 
-      <ArrivalDepartureEditor events={plan.arrivalDepartureEvents} stops={orderedStops} days={plan.days} onChange={updateEvents} />
-
-      <section className="phase-note"><strong>Phase 2 boundary</strong><span>Day itinerary, activities, food, budget, and import/export arrive later.</span></section>
+      <ArrivalDepartureEditor events={plan.arrivalDepartureEvents} stops={orderedStops} days={plan.days} tripEndDate={plan.metadata.endDate} onChange={updateEvents} />
 
       {pending && (
         <DayResolutionDialog
@@ -180,6 +162,6 @@ export function RouteTimeline({ plan }: { plan: TripPlan }) {
           }}
         />
       )}
-    </main>
+    </div>
   )
 }

@@ -1,10 +1,10 @@
 import { useStore } from 'zustand'
 import { TripSetupWizard } from './features/setup/TripSetupWizard'
-import { RouteTimeline } from './features/route/RouteTimeline'
+import { PlannerPage } from './pages/PlannerPage'
 import { selectPlan } from './store/selectors'
 import { tripStore } from './store/tripStore'
 
 export default function App() {
   const plan = useStore(tripStore, selectPlan)
-  return plan ? <RouteTimeline plan={plan} /> : <TripSetupWizard />
+  return plan ? <PlannerPage plan={plan} /> : <TripSetupWizard />
 }

@@ -33,4 +33,39 @@ describe('tripPlanSchema', () => {
 
     expect(tripPlanSchema.safeParse(plan).success).toBe(false)
   })
+
+  it('accepts independent consecutive activity ordering within each day and slot', () => {
+    const plan = createValidPlan()
+    const source = plan.activities[0]!
+    plan.activities = [
+      { ...source, id: 'morning-1', order: 1 },
+      { ...source, id: 'evening-0', slot: 'evening', order: 0 },
+      { ...source, id: 'morning-0', order: 0 },
+      { ...source, id: 'day-2-morning-0', dayId: 'day-2', order: 0 },
+    ]
+
+    expect(tripPlanSchema.safeParse(plan).success).toBe(true)
+  })
+
+  it.each([
+    ['a gap', [0, 2]],
+    ['a duplicate', [0, 0]],
+    ['a non-zero start', [1, 2]],
+  ])('rejects %s in activity ordering within a day and slot', (_label, orders) => {
+    const plan = createValidPlan()
+    const source = plan.activities[0]!
+    plan.activities = orders.map((order, index) => ({ ...source, id: `activity-${index}`, order }))
+
+    const result = tripPlanSchema.safeParse(plan)
+
+    expect(result.success).toBe(false)
+    if (!result.success) {
+      expect(result.error.issues).toEqual(expect.arrayContaining([
+        expect.objectContaining({
+          path: ['activities'],
+          message: 'Activity order must be consecutive within each day and time slot',
+        }),
+      ]))
+    }
+  })
 })

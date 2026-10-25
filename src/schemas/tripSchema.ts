@@ -222,6 +222,19 @@ export const tripPlanSchema: z.ZodType<TripPlan> = tripPlanFields.superRefine((p
     }
   })
 
+  const activityGroups = new Map<string, typeof plan.activities>()
+  plan.activities.forEach((activity) => {
+    const group = activityGroups.get(`${activity.dayId}:${activity.slot}`) ?? []
+    group.push(activity)
+    activityGroups.set(`${activity.dayId}:${activity.slot}`, group)
+  })
+  activityGroups.forEach((group) => {
+    const orders = group.map((activity) => activity.order).sort((left, right) => left - right)
+    if (orders.some((order, index) => order !== index)) {
+      addIssue(context, ['activities'], 'Activity order must be consecutive within each day and time slot')
+    }
+  })
+
   plan.activities.forEach((activity, index) => {
     const day = daysById.get(activity.dayId)
     if (!stopsById.has(activity.routeStopId)) addIssue(context, ['activities', index, 'routeStopId'], 'Unknown route stop ID')

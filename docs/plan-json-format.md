@@ -12,7 +12,7 @@ Trip plans are portable UTF-8 JSON documents. Version `1` is the only currently 
 - Travel legs connect each pair of adjacent route stops in order.
 - URLs accept only absolute `http` and `https` URLs. Google Maps URLs are recognized by later UI behavior, not restricted by this storage format.
 - INR amounts must be finite and nonnegative. INR is the sole supported currency.
-- An activity end time requires a start time and must be later than it. Overlaps are intentionally valid; they will produce UI warnings rather than import errors.
+- Activity `order` values are consecutive within each day/time-slot group. An activity end time requires a start time and must be later than it. Overlaps are intentionally valid; they produce UI warnings rather than validation errors.
 - `description`, notes, links, times, costs, and other fields marked optional below may be omitted. Do not encode omitted values as `undefined`, because JSON has no such value.
 
 ## Representative version 1 document
