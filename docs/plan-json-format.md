@@ -6,9 +6,10 @@ Trip plans are portable UTF-8 JSON documents. Version `1` is the only currently 
 
 - Objects are strict: unknown properties are rejected so misspelled fields do not silently disappear.
 - Dates use `YYYY-MM-DD`; date-times use ISO 8601 with `Z` or an explicit timezone offset; activity times use 24-hour `HH:mm`.
-- Trip and stop end dates cannot precede their start dates. Stops and days must be inside their parent date ranges.
+- Trip and stop end dates cannot precede their start dates. Ordered stops form one contiguous partition of the trip: every trip date belongs to exactly one stop.
+- The itinerary contains exactly one sequentially numbered day for every trip date, and each day is inside its assigned stop range.
 - IDs must be non-empty and unique within each record collection. Every stop/day reference must resolve, and a referenced day must belong to the same stop as its activity, food entry, or event.
-- Travel legs must connect two existing, different stops.
+- Travel legs connect each pair of adjacent route stops in order.
 - URLs accept only absolute `http` and `https` URLs. Google Maps URLs are recognized by later UI behavior, not restricted by this storage format.
 - INR amounts must be finite and nonnegative. INR is the sole supported currency.
 - An activity end time requires a start time and must be later than it. Overlaps are intentionally valid; they will produce UI warnings rather than import errors.

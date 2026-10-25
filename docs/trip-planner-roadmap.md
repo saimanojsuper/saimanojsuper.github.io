@@ -129,6 +129,18 @@ Build a static, frontend-only **multi-city trip planner** using React and Vite. 
 
 **Estimate:** 2–3 days
 
+#### Deferred from Phase 2: Extend an existing trip
+
+> **Phase 3 work — not implemented in Phase 2.**
+
+When an existing trip's duration or end date is increased:
+
+- Generate the additional trip days automatically and assign them to the final destination.
+- Move the departure event to the new trip end date while preserving its existing time.
+- Keep the arrival event on the trip start date.
+- Update arrival and departure date-picker bounds immediately to use the expanded trip range.
+- Keep existing activities on their currently assigned dates.
+
 #### Task 3.1: Build the main planner workspace
 
 - **Owner:** `code-puppy`

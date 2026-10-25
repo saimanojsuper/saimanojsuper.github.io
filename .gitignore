@@ -11,7 +11,8 @@ coverage/
 !.env.example
 *.local
 
-# Editor, logs, and operating-system files
+# Editor, test-router state, logs, and operating-system files
+.wibey-test/
 .vscode/
 .idea/
 *.log

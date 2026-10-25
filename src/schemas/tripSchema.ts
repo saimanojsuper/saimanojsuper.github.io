@@ -1,5 +1,7 @@
 import { z } from 'zod'
 import { CURRENT_SCHEMA_VERSION } from '../constants/schema'
+import { validateStopDateCoverage } from '../domain/dateAllocation'
+import { enumerateDates, isIsoDate } from '../domain/dateUtils'
 import {
   ACTIVITY_CATEGORIES,
   ACTIVITY_SLOTS,
@@ -159,6 +161,7 @@ export const tripPlanSchema: z.ZodType<TripPlan> = tripPlanFields.superRefine((p
   checkUnique(plan.routeStops, (item) => item.id, 'routeStops', 'route stop ID', context)
   checkUnique(plan.routeStops, (item) => item.order, 'routeStops', 'route stop order', context)
   checkUnique(plan.travelLegs, (item) => item.id, 'travelLegs', 'travel leg ID', context)
+  checkUnique(plan.travelLegs, (item) => item.order, 'travelLegs', 'travel leg order', context)
   checkUnique(plan.days, (item) => item.id, 'days', 'day ID', context)
   checkUnique(plan.days, (item) => item.date, 'days', 'day date', context)
   checkUnique(plan.days, (item) => item.dayNumber, 'days', 'day number', context)
@@ -166,8 +169,13 @@ export const tripPlanSchema: z.ZodType<TripPlan> = tripPlanFields.superRefine((p
   checkUnique(plan.foodEntries, (item) => item.id, 'foodEntries', 'food entry ID', context)
   checkUnique(plan.arrivalDepartureEvents, (item) => item.id, 'arrivalDepartureEvents', 'event ID', context)
 
+  const orderedStops = [...plan.routeStops].sort((left, right) => left.order - right.order)
   const stopsById = new Map(plan.routeStops.map((stop) => [stop.id, stop]))
   const daysById = new Map(plan.days.map((day) => [day.id, day]))
+
+  validateStopDateCoverage(plan.routeStops, startDate, endDate).forEach((message) => {
+    addIssue(context, ['routeStops'], message)
+  })
 
   plan.routeStops.forEach((stop, index) => {
     if (stop.endDate < stop.startDate) {
@@ -178,11 +186,29 @@ export const tripPlanSchema: z.ZodType<TripPlan> = tripPlanFields.superRefine((p
     }
   })
 
+  if (plan.travelLegs.length !== Math.max(0, plan.routeStops.length - 1)) {
+    addIssue(context, ['travelLegs'], 'Route must have one travel leg between each pair of adjacent stops')
+  }
   plan.travelLegs.forEach((leg, index) => {
     if (!stopsById.has(leg.fromStopId)) addIssue(context, ['travelLegs', index, 'fromStopId'], 'Unknown route stop ID')
     if (!stopsById.has(leg.toStopId)) addIssue(context, ['travelLegs', index, 'toStopId'], 'Unknown route stop ID')
     if (leg.fromStopId === leg.toStopId) addIssue(context, ['travelLegs', index, 'toStopId'], 'A travel leg must connect two different stops')
+    const expectedFrom = orderedStops[leg.order]
+    const expectedTo = orderedStops[leg.order + 1]
+    if (!expectedFrom || !expectedTo || leg.fromStopId !== expectedFrom.id || leg.toStopId !== expectedTo.id) {
+      addIssue(context, ['travelLegs', index], 'Travel leg must connect adjacent route stops in order')
+    }
   })
+
+  const expectedDates = isIsoDate(startDate) && isIsoDate(endDate) && endDate >= startDate
+    ? enumerateDates(startDate, endDate)
+    : []
+  const orderedDays = [...plan.days].sort((left, right) => left.dayNumber - right.dayNumber)
+  const actualDates = orderedDays.map((day) => day.date)
+  const sequentialDayNumbers = orderedDays.every((day, index) => day.dayNumber === index + 1)
+  if (!sequentialDayNumbers || expectedDates.length !== actualDates.length || expectedDates.some((date, index) => actualDates[index] !== date)) {
+    addIssue(context, ['days'], 'Every trip date must have exactly one sequential itinerary day in order')
+  }
 
   plan.days.forEach((day, index) => {
     const stop = stopsById.get(day.routeStopId)

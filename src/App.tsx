@@ -1,12 +1,10 @@
+import { useStore } from 'zustand'
+import { TripSetupWizard } from './features/setup/TripSetupWizard'
+import { RouteTimeline } from './features/route/RouteTimeline'
+import { selectPlan } from './store/selectors'
+import { tripStore } from './store/tripStore'
+
 export default function App() {
-  return (
-    <main className="shell">
-      <p className="eyebrow">Travel Route Planner</p>
-      <h1>The foundation is packed.</h1>
-      <p>
-        The versioned plan format, local recovery store, and history engine are ready.
-        Planning screens arrive in a later phase.
-      </p>
-    </main>
-  )
+  const plan = useStore(tripStore, selectPlan)
+  return plan ? <RouteTimeline plan={plan} /> : <TripSetupWizard />
 }
